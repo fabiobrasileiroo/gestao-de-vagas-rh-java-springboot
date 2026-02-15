@@ -29,8 +29,10 @@ Projeto mínimo demonstrando:
 ./mvnw clean package
 ```
 
-# Crie o arquivo .env (baseado no .env.example)
+1.1 Crie o arquivo .env (baseado no .env.example)
+```bash
 cp .env.example .env
+```
 
 2. Rodar pela task do Spring Boot durante desenvolvimento:
 
