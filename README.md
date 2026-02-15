@@ -38,7 +38,7 @@ Projeto mínimo demonstrando:
 3. Ou executar o JAR gerado:
 
 ```bash
-java -jar target/gestao_vagas-0.0.1-SNAPSHOT.jar
+java -jar target/gestao_vagas-0.0.1.jar
 ```
 
 O aplicativo, por padrão, será executado em `http://localhost:8080`.
