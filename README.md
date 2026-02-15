@@ -50,11 +50,3 @@ Executar testes unitários:
 ```bash
 ./mvnw test
 ```
-
-## Contribuição
-
-Bug reports e sugestões são bem-vindos — abra issues ou crie um PR direcionado à branch `main`.
-
-## Licença
-
-Adicione aqui a licença do projeto (ex.: MIT) ou remova esta seção se não aplicável.
