@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 networks:
   gv-network:
@@ -10,13 +10,14 @@ volumes:
 services:
   mysql:
     container_name: gestao_vagas_msyql
-    image: mysql
+    image: mysql:8.0
     ports:
-      - 5432:5432
+      - 3306:3306
     environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=gestao_vagas
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=admin
-      - MYSQL_DB=gestao_vagas
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
@@ -33,4 +34,4 @@ services:
     ports:
       - 3000:3000
     networks:
-    - gv-network
+      - gv-network
