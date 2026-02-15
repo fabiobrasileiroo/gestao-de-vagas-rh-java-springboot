@@ -5,10 +5,14 @@ spring:
     url: ${DB_URL:jdbc:mysql://localhost:3306/gestao_vagas}
     username: ${DB_USERNAME:admin}
     password: ${DB_PASSWORD:admin}
-#   jpa:
-#     hibernate:
-#       ddl-auto: ${JPA_DDL_AUTO:update}
-#     show-sql: ${JPA_SHOW_SQL:true}
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    show-sql: ${JPA_SHOW_SQL:true}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
 
 # server:
 #   error:
