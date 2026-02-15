@@ -29,10 +29,13 @@ Projeto mínimo demonstrando:
 ./mvnw clean package
 ```
 
+# Crie o arquivo .env (baseado no .env.example)
+cp .env.example .env
+
 2. Rodar pela task do Spring Boot durante desenvolvimento:
 
 ```bash
-./mvnw spring-boot:run
+dotenv -- ./mvnw spring-boot:run
 ```
 
 3. Ou executar o JAR gerado:

@@ -2,13 +2,13 @@ spring:
   application:
     name: gestao_vagas
   datasource:
-    url: jdbc:mysql://localhost:3306/gestao_vagas
-    username: admin
-    password: admin
+    url: ${DB_URL:jdbc:mysql://localhost:3306/gestao_vagas}
+    username: ${DB_USERNAME:admin}
+    password: ${DB_PASSWORD:admin}
 #   jpa:
 #     hibernate:
-#       ddl-auto: update
-#     show-sql: true
+#       ddl-auto: ${JPA_DDL_AUTO:update}
+#     show-sql: ${JPA_SHOW_SQL:true}
 
 # server:
 #   error:

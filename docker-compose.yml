@@ -4,20 +4,45 @@ networks:
   gv-network:
     driver: bridge
 volumes:
+  mysql_data:
   prometheus_data:
   grafana_data:
 
 services:
   mysql:
-    container_name: gestao_vagas_msyql
+    container_name: gestao_vagas_mysql
     image: mysql:8.0
     ports:
-      - 3306:3306
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=admin
       - MYSQL_DATABASE=gestao_vagas
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=admin
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - gv-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    container_name: gestao_vagas_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - gv-network
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest

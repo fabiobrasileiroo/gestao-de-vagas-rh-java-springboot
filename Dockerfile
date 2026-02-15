@@ -1,15 +1,19 @@
-FROM ubuntu:lastest AS build
+FROM maven:3.9-eclipse-temurin-17 AS build
 
-RUN apt update
-RUN apt install openjdk-17-jdk -y
-COPY
+WORKDIR /app
 
-RUN apt install maven -y
-RUN mvn clean install
+COPY pom.xml .
+COPY src ./src
+COPY .env .
 
-FROM openjdk:17-jdk-slim
+RUN mvn clean package -DskipTests
+
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/target/gestao_vagas-0.0.1.jar app.jar
+
 EXPOSE 8080
-
-COPY --from=build /target/gestao_vagas-0.0.1.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
