@@ -35,7 +35,7 @@ cp .env.example .env
 2. Rodar pela task do Spring Boot durante desenvolvimento:
 
 ```bash
-dotenv -- ./mvnw spring-boot:run
+mvnw spring-boot:run
 ```
 
 3. Ou executar o JAR gerado:
