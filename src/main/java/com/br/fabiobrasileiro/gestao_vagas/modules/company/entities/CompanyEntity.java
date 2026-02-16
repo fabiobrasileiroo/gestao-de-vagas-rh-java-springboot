@@ -1,4 +1,4 @@
-package com.br.fabiobrasileiro.gestao_vagas.modules.candidate;
+package com.br.fabiobrasileiro.gestao_vagas.modules.company.entities;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -11,16 +11,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-@Entity(name = "candidate")
-@Table(name = "candidate")
-public class CandidateEntity {
+@Entity(name = "company")
+public class CompanyEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
@@ -36,13 +34,12 @@ public class CandidateEntity {
   @Length(min = 10, max = 150, message = "O campo deve conter entre (10) e (150) caracteres")
   private String password;
 
-  private String description;
-  private String curriculum;
+  private String website;
+  private String document;
 
   @CreationTimestamp
   private LocalDateTime createdAt;
 
   @UpdateTimestamp
   private LocalDateTime updatedAt;
-
 }
