@@ -1,4 +1,4 @@
-package com.br.fabiobrasileiro.gestao_vagas.modules.company.controller;
+package com.br.fabiobrasileiro.gestao_vagas.modules.company.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
