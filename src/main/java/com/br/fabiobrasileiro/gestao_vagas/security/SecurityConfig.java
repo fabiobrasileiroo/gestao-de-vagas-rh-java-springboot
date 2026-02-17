@@ -3,6 +3,7 @@ package com.br.fabiobrasileiro.gestao_vagas.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -18,9 +19,13 @@ public class SecurityConfig {
         .exceptionHandling(ex -> ex
             .authenticationEntryPoint(customAuthenticationEntryPoint))
         .authorizeHttpRequests(auth -> {
-          auth.requestMatchers("/candidate/**").permitAll()
-              .requestMatchers("/company/**").permitAll();
-          auth.anyRequest().authenticated();
+          auth
+              // Libera apenas POST em rotas específicas (resto fica bloqueado)
+              .requestMatchers(HttpMethod.POST, "/candidate/**").permitAll()
+              .requestMatchers(HttpMethod.POST, "/company/**").permitAll()
+
+              // Todas as outras rotas precisam autenticação
+              .anyRequest().authenticated();
         });
     return http.build();
   }
